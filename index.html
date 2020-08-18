@@ -1,0 +1,69 @@
+<html>
+
+<head>
+    <title>
+        Changing Text!!
+    </title>
+    <style>
+        html,
+        body {
+            background-color: #000;
+        }
+        
+        .text {
+            font-size: 70px;
+            color: #fff;
+            font-weight: 400;
+            font-family: monospace;
+        }
+        
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text center">
+        <span id="changingtxt"></span>
+    </div>
+    <script type="text/javascript">
+        var array = ['MY', 'NAME', 'IS', 'SUMIT', 'TYAGI'];
+        var currentIndex = 0,
+            i = 0;
+
+        function writer() {
+            var txt = array[currentIndex];
+            if (i < txt.length) {
+                document.getElementById("changingtxt").innerHTML += txt.charAt(i);
+                i++;
+                this.setTimeout(this.writer, 250);
+            } else {
+                this.setTimeout(this.deletion, 110);
+            }
+        }
+
+        function deletion() {
+            var txt = array[currentIndex];
+            if (i > 0) {
+                i--;
+                document.getElementById("changingtxt").innerHTML = txt.substring(0, i);
+                this.setTimeout(this.deletion, 110);
+            } else {
+                currentIndex++;
+                if (currentIndex >= array.length) {
+                    currentIndex = 0;
+                }
+                this.setTimeout(this.writer, 250);
+            }
+        }
+        window.onload = function() {
+            this.setTimeout(this.writer, 1000);
+        }
+    </script>
+</body>
+
+</html>
